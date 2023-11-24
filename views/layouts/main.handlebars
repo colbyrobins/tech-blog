@@ -1,7 +1,39 @@
-{{#each blogs}}
-  <div class="blog">
-    <h2>{{title}}</h2>
-    <p>{{content}}</p>
-    <p>Author: {{author}}</p>
-  </div>
-{{/each}}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Your Tech Blog</title>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <nav>
+        <div>
+            <ul>
+                <li> <a href="#">Home</a> </li>
+                <li> <a href="#">Dashboard</a> </li>
+                <li> <a href="#">Log In</a></li>
+                <li> <a href="#">Log Out</a> </li>
+            </ul>
+        </div>
+        <div>
+            <h1>The Tech Blog</h1>
+        </div>
+    </nav>
+
+    <!-- Main Section -->
+    <main>
+        {{#each blogs}}
+        <div>
+            <h2>{{title}}</h2>
+            <p>{{content}}</p>
+            {{!-- <p>{{author}}</p> --}}
+        </div>
+        {{/each}}
+    </main>
+
+</body>
+
+</html>
