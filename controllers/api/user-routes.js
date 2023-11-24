@@ -10,6 +10,20 @@ router.get("/", async (req, res) => {
     }
 });
 
+// GET user by username
+router.get('/:username', async (req, res) => {
+  try {
+      const userData = await User.findOne({
+        where: {
+          username: req.params.username
+        }
+      });
+      res.status(200).json(userData);
+  } catch (err) {
+      res.status(400).json(err);
+  }
+});
+
 // CREATE new user
 router.post('/', async (req, res) => {
     try {
@@ -36,7 +50,7 @@ router.post('/login', async (req, res) => {
     try {
       const dbUserData = await User.findOne({
         where: {
-          name: req.body.username,
+          username: req.body.username,
         },
       });
   

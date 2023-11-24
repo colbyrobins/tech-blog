@@ -29,21 +29,25 @@ router.get('/dashboard', async (req, res) => {
         res.redirect('/login');
         return;
     }
-    console.log(req.session)
-    // const creatorId = User.findOne({
-    //     where: {
-    //         email: req.session.
-    //     }
-    // })
 
-    // const usersBlogsPosts = await BlogPost.findAll({
-    //     where: {
-            
-    //     }
-    // })
-    res.render('dashboard', {
+    const creatorData = await User.findOne({
+        username: req.session.username
+    });
 
-    })
+    const userBlogPosts = await BlogPost.findAll({
+        attributes: [ 'title', 'date_created' ],
+        where: {
+            creator_id: creatorData.id
+        }
+    });
+    
+    const blogs = userBlogPosts.map((blog) => blog.get({ plain: true }));
+
+    res.render("dashboard", {
+        blogs,
+        loggedIn: req.session.loggedIn
+    });
+
 });
 
 // Login route
