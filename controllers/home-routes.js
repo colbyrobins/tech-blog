@@ -1,6 +1,8 @@
 const router = require("express").Router();
+const { where } = require("sequelize");
 const { User } = require("../models");
 const BlogPost = require("../models/BlogPost");
+const { emit } = require("nodemon");
 
 router.get("/", async (req, res) => {
     try {
@@ -19,6 +21,29 @@ router.get("/", async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
+});
+
+// Dashboard route 
+router.get('/dashboard', async (req, res) => {
+    if (!req.session.loggedIn) {
+        res.redirect('/login');
+        return;
+    }
+    console.log(req.session)
+    // const creatorId = User.findOne({
+    //     where: {
+    //         email: req.session.
+    //     }
+    // })
+
+    // const usersBlogsPosts = await BlogPost.findAll({
+    //     where: {
+            
+    //     }
+    // })
+    res.render('dashboard', {
+
+    })
 });
 
 // Login route

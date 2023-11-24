@@ -14,14 +14,14 @@ router.get("/", async (req, res) => {
 router.post('/', async (req, res) => {
     try {
       const dbUserData = await User.create({
-        name: req.body.name,
-        email: req.body.email,
+        username: req.body.username,
         password: req.body.password,
       });
   
       // Set up sessions with a 'loggedIn' variable set to `true`
       req.session.save(() => {
         req.session.loggedIn = true;
+        req.session.username = req.body.username;
   
         res.status(200).json(dbUserData);
       });
@@ -36,14 +36,14 @@ router.post('/login', async (req, res) => {
     try {
       const dbUserData = await User.findOne({
         where: {
-          email: req.body.email,
+          name: req.body.username,
         },
       });
   
       if (!dbUserData) {
         res
           .status(400)
-          .json({ message: 'Incorrect email or password. Please try again!' });
+          .json({ message: 'Incorrect username or password. Please try again!' });
         return;
       }
   
@@ -59,6 +59,7 @@ router.post('/login', async (req, res) => {
       // Once the user successfully logs in, set up the sessions variable 'loggedIn'
       req.session.save(() => {
         req.session.loggedIn = true;
+        req.session.username = { username: req.body.username }
   
         res
           .status(200)
