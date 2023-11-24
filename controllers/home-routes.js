@@ -11,25 +11,26 @@ router.get("/", async (req, res) => {
             },
         });
         const blogs = blogData.map((blog) => blog.get({ plain: true }));
-        console.log(blogs)
-        res.render("homepage", { blogs });
+
+        res.render("homepage", { 
+            blogs,
+            loggedIn: req.session.loggedIn
+        });
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-// // route to get one blog
-// router.get("/:id", async (req, res) => {
-//     try {
-//         const blogData = await BlogPost.findByPk(req.params.id);
-//         if (!blogData) {
-//             res.status(404).json({ message: "No blog found with this id!" });
-//             return;
-//         }
-//         res.status(200).json(blogData);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+// Login route
+router.get('/login', (req, res) => {
+    // If the user is already logged in, redirect to the homepage
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+    // Otherwise, render the 'login' template
+    res.render('login');
+  });
+
 
 module.exports = router;
