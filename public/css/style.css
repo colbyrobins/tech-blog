@@ -44,19 +44,13 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    width: 100%;
     height: 100%;
     background-color: var(--nav-text-color);
     color: var(--nav-backgroud-color);
 }
 
-main div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+.blog {
+    margin-bottom: 5px;
     width: 85%;
     height: max-content;
     background-color: var(--nav-text-color);
@@ -66,16 +60,15 @@ main div {
 
 }
 
-main div h2 {
+.blog-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: var(--nav-backgroud-color);
     color: var(--blog-post-color);
-    align-self: flex-start;
-    width: 100%;
-    margin: 0;
-    padding: 15px 0 15px 0;
 }
-main div p {
-    color: var(--nav-backgroud-color);
-    align-self: flex-start;
-    padding: 5px;
+
+.blog-auth {
+    font-size: 20px;
 }
+

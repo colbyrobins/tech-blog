@@ -26,10 +26,14 @@
     <!-- Main Section -->
     <main>
         {{#each blogs}}
-        <div>
-            <h2>{{title}}</h2>
+        <div class="blog">
+            <div class="blog-header">
+                <h2 class="blog-title">{{title}}</h2>
+                <p class="blog-auth">
+                    Posted by {{user.name}} on {{format_date date_created}}
+                </p>
+            </div>
             <p>{{content}}</p>
-            {{!-- <p>{{author}}</p> --}}
         </div>
         {{/each}}
     </main>
