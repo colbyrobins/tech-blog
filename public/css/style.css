@@ -1,13 +1,14 @@
 
 :root {
-    --nav-backgroud-color: rgb(63, 61, 61);
-    --nav-text-color: rgb(179, 229, 179);
-    --blog-post-color: rgb(218, 208, 208);
+    --primary: rgb(63, 61, 61);
+    --secondary: rgb(179, 229, 179);
+    --tertiary: rgb(218, 208, 208);
+    font-family: Arial, Helvetica, sans-serif;
 }
 nav  {
     display: flex;
     flex-direction: column;
-    background-color: var(--nav-backgroud-color);
+    background-color: var(--primary);
 }
 
 nav ul {
@@ -22,15 +23,17 @@ nav li {
     padding: 10px;
     font-size: x-large;
     text-decoration: none;
-}   
+    font-style: arial;
+}
+
  nav li a {
     text-decoration: none;
-    color: var(--nav-text-color)
+    color: var(--secondary);
  }
 
 nav div h1 {
     color: black;
-    background-color: var(--nav-text-color);
+    background-color: var(--secondary);
     margin-left: 30px;
     padding: 10px 20px;
     font-size: 2rem;
@@ -39,6 +42,16 @@ nav div h1 {
     width: max-content;
 }
 
+.btn-no-style {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 100%;
+    color: var(--secondary);
+  }
+
 main {
     display: flex;
     flex-wrap: wrap;
@@ -46,29 +59,27 @@ main {
     align-items: center;
     justify-content: center;
     height: 100%;
-    background-color: var(--nav-text-color);
-    color: var(--nav-backgroud-color);
+    background-color: var(--secondary);
+    color: var(--primary);
 }
 
-.blog {
-    width: 100%;
-
-    background-color: var(--nav-text-color);
-    color: var(--nav-backgroud-color);
+.blog-post {
+    width: 80%;
+    background-color: var(--secondary);
+    color: var(--primary);
     border: solid;
     border-radius: 5px;
-
 }
 
 .blog-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: var(--nav-backgroud-color);
-    color: var(--blog-post-color);
+    background-color: var(--primary);
+    color: var(--tertiary);
 }
 
-.blog-auth {
+.blog-author {
     font-size: 20px;
 }
 

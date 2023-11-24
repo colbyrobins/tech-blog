@@ -1,7 +1,11 @@
-{{#each blogs}}
-  <div class="blog">
-    <h2>{{title}}</h2>
+ {{#each blogs}}
+  <div class="blog-post">
+    <div class="blog-header">
+      <h2 class="blog-title">{{title}}</h2>
+      <p class="blog-author">
+          Posted by {{user.name}} on {{format_date date_created}}
+      </p>
+    </div>
     <p>{{content}}</p>
-    <p>Author: {{author}}</p>
   </div>
 {{/each}}

@@ -34,7 +34,6 @@ router.post('/', async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
     try {
-        console.log("Am i making it here?")
       const dbUserData = await User.findOne({
         where: {
           email: req.body.email,
@@ -70,5 +69,17 @@ router.post('/login', async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+  // Logout route 
+router.post('/logout', (req, res) => {
+  // When the user logs out, destroy the session
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
 
 module.exports = router;
