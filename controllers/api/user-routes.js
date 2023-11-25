@@ -46,10 +46,11 @@ router.post('/', async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
     try {
+
       const dbUserData = await User.findOne({
-        where: {
-          username: req.body.username,
-        },
+          where: {
+            username: req.body.username
+          }      
       });
   
       if (!dbUserData) {

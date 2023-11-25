@@ -1,8 +1,7 @@
 const loginFormHandler = async (event) => {
-  event.preventDefault();
 
-  const username = document.querySelector('#username-login').value.trim();
-  const password = document.querySelector('#password-login').value.trim();
+  const username = document.querySelector('#usernameInput').value.trim();
+  const password = document.querySelector('#passwordInput').value.trim();
 
   if (username && password) {
     const response = await fetch('/api/users/login', {
@@ -20,10 +19,9 @@ const loginFormHandler = async (event) => {
 };
 
 const signupFormHandler = async (event) => {
-  event.preventDefault();
 
-  const username = document.querySelector('#username-signup').value.trim();
-  const password = document.querySelector('#password-signup').value.trim();
+  const username = document.querySelector('#usernameInput').value.trim();
+  const password = document.querySelector('#passwordInput').value.trim();
   
   if (username && password) {
     const response = await fetch('/api/users', {
@@ -40,10 +38,6 @@ const signupFormHandler = async (event) => {
   }
 };
 
-document
-  .querySelector('.login-form')
-  .addEventListener('submit', loginFormHandler);
-
-document
-  .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
+// quickly switch between login and signup forms.
+const signInForm = () => document.location.replace('/login');
+const signUpForm = () => document.location.replace('/signup');

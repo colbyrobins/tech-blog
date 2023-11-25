@@ -6,7 +6,9 @@ const User = require('../../models/User.js')
 router.post("/", async (req, res) => {
     try {
         const userData = await User.findOne({
-              username: req.params.username
+            where: {
+                username: req.session.username.username
+            }
           });
         console.log(userData)
         const blogData = await BlogPost.create({

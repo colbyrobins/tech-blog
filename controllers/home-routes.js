@@ -23,28 +23,36 @@ router.get("/", async (req, res) => {
 
 // Dashboard route 
 router.get('/dashboard', async (req, res) => {
-    if (!req.session.loggedIn) {
-        res.redirect('/login');
+    try {
+
+        if (!req.session.loggedIn) {
+            res.redirect('/login');
+            return;
+        }
+        
+        const creatorData = await User.findOne({
+            // username: req.session.username
+            where: {
+                username: req.session.username.username
+            }
+        }); 
+        const userBlogPosts = await BlogPost.findAll({
+            attributes: [ 'title', 'date_created' ],
+            where: {
+                creator_id: creatorData.id
+            }
+        });
+        
+        const blogs = userBlogPosts.map((blog) => blog.get({ plain: true }));
+    
+        res.render("dashboard", {
+            blogs,
+            loggedIn: req.session.loggedIn
+        });
+    } catch (err) {
+        console.error(err);
         return;
     }
-
-    const creatorData = await User.findOne({
-        username: req.session.username
-    });
-
-    const userBlogPosts = await BlogPost.findAll({
-        attributes: [ 'title', 'date_created' ],
-        where: {
-            creator_id: creatorData.id
-        }
-    });
-    
-    const blogs = userBlogPosts.map((blog) => blog.get({ plain: true }));
-
-    res.render("dashboard", {
-        blogs,
-        loggedIn: req.session.loggedIn
-    });
 
 });
 
@@ -59,12 +67,16 @@ router.get('/login', (req, res) => {
     res.render('login');
   });
 
+  // Signup route
+  router.get('/signup', (req, res) => {
+    res.render('signup');
+  });
+  
   // Create post route
-  router.get('/createPost', (req, res) => {
-    if (req.session.loggedIn) {
-        res.render('createpost');
-    }
-
-  })
+ router.get('/createPost', (req, res) => {
+   if (req.session.loggedIn) {
+       res.render('createpost');
+   }
+});
 
 module.exports = router;
