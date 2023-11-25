@@ -1,8 +1,6 @@
 const router = require("express").Router();
-const { where } = require("sequelize");
 const { User } = require("../models");
 const BlogPost = require("../models/BlogPost");
-const { emit } = require("nodemon");
 
 router.get("/", async (req, res) => {
     try {
@@ -61,5 +59,12 @@ router.get('/login', (req, res) => {
     res.render('login');
   });
 
+  // Create post route
+  router.get('/createPost', (req, res) => {
+    if (req.session.loggedIn) {
+        res.render('createpost');
+    }
+
+  })
 
 module.exports = router;

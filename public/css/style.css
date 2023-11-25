@@ -61,6 +61,11 @@ nav div h1 {
     justify-content: space-between;
 }
 
+.blog-post-color {
+    background-color: var(--secondary);
+    color: var(--primary);
+}
+
 .blog-post {
     display: flex;
     flex-wrap: wrap;
@@ -76,6 +81,10 @@ nav div h1 {
     border-radius: 5px;
 }
 
+.blog-header-color {
+    background-color: var(--primary);
+    color: var(--tertiary);
+}
 
 .blog-header {
     display: flex;
@@ -129,7 +138,7 @@ nav div h1 {
     font-weight: bold;
   }
 
-.new-post-button {
+#new-post-button {
     background-color: var(--primary);
     color: white;
     text-align: center;
@@ -138,4 +147,13 @@ nav div h1 {
     height: 50px;
     border-radius: 10px;
     font-size: 24px;
+    align-self: center;    
+}
+
+#new-blog {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }

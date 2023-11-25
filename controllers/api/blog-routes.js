@@ -1,14 +1,18 @@
 const router = require("express").Router();
 const BlogPost = require("../../models/BlogPost");
+const User = require('../../models/User.js')
 
 // route to create a blog
 router.post("/", async (req, res) => {
     try {
-        const userId = req.session.user_id;
+        const userData = await User.findOne({
+              username: req.params.username
+          });
+        console.log(userData)
         const blogData = await BlogPost.create({
             title: req.body.title,
             content: req.body.content,
-            creator_id: userId, // Use the user id in the creator_id field
+            creator_id: userData.id,
             date_created: new Date(),
         });
         res.status(200).json(blogData);
