@@ -1,26 +1,29 @@
-<div class="container mt-5 ">
-    <div class="row">
-        <div class="col-md6 mx-auto">
-            <div class="card">
-                <div class="blog-header-color">
-                    <h5 class="card-header">Creat New Post</h5>
-                </div>
-                <div class="card-body blog-post-color">
-                    <div class="mb-3">
-                        <h6 class="text-start">Title</h6>
-                        <input type="text" class="form-control" id="titleInput">
-                    </div>
-                    <div class="mb-3 text-start">
-                        <h6>Content</h6>
-                        <textarea class="form-control" id="bodyInput" rows="4"></textarea>
-                    </div>
-                    <div class="card-footer text-center">
-                        <button class="btn col-md-12 bg-secondary text-white" onclick="createNewPost()">Create</button>
-                    </div>
-                </div>
-            </div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md6 mx-auto">
+      <div class="card">
+        <div class="blog-header-color">
+          <h5 class="card-header">Creat New Post</h5>
         </div>
+        <div class="card-body blog-post-color">
+          <div class="mb-3">
+            <h6 class="text-start">Title</h6>
+            <input type="text" class="form-control" id="titleInput" />
+          </div>
+          <div class="mb-3 text-start">
+            <h6>Content</h6>
+            <textarea class="form-control" id="bodyInput" rows="4"></textarea>
+          </div>
+          <div class="card-footer text-center">
+            <button
+              class="btn col-md-12 bg-secondary text-white"
+              onclick="createNewPost()"
+            >Create</button>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <script src="./js/newPost.js"></script>

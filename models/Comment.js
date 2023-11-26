@@ -22,7 +22,7 @@ Comment.init(
     },
     creator_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: false
     },
     post_id: {
       type: DataTypes.INTEGER,

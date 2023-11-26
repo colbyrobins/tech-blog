@@ -2,24 +2,27 @@
   <div class="row">
     <div class="col-md-12 mx-auto">
       {{#each blogs as |blog|}}
-      <div class="card mx-auto">
-        <div class="blog-header-color rounded-3">
-          <div class="row mx-auto">
-            <div class="col-md-8">
-              <h5 class="card-header">{{title}}</h5>
-            </div>
-            <div class="col-md-4 text-end">
-              <p class="mb-0">{{format_date date_created}}</p>
+        <div class="card mx-auto">
+          <div class="blog-header-color rounded-3">
+            <div class="row mx-auto">
+              <div class="col-md-8">
+                <h5 class="card-header">{{title}}</h5>
+              </div>
+              <div class="col-md-4 text-end">
+                <p class="mb-0">{{format_date date_created}}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       {{/each}}
     </div>
   </div>
 </div>
 
 <div class="text-center">
-  <button class="btn col-md-2 bg-black text-white fs-5 rounded-3 m-3" onclick="newPostHandler()">+ New Post</button>
+  <button
+    class="btn col-md-2 bg-black text-white fs-5 rounded-3 m-3"
+    onclick="newPostHandler()"
+  >+ New Post</button>
 </div>
 <script src="./js/newPost.js"></script>

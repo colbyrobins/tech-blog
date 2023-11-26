@@ -132,11 +132,10 @@ nav div h1 {
     border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
   }
   
-  .card-body {
+.card-body {
     font-size: 1.4rem;
     text-align: center;
-    font-weight: bold;
-  }
+}
 
 #new-post-button {
     background-color: var(--primary);
