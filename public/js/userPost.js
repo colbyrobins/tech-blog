@@ -1,3 +1,4 @@
+
 const newPostHandler = async (event) => {
     const blogPostsContainer = document.querySelector('#blog-posts');
     const newPostBtn = document.querySelector('#new-post-button');
@@ -31,3 +32,14 @@ const createNewPost = async (event) => {
       }
     
 };
+
+// find all the card-headers (posts) on the dashboard and add 
+// a handler to edit a post.
+const blogHeaders = document.querySelectorAll('.card-header');
+
+// add handler to each post.
+blogHeaders.forEach(header => {
+    header.addEventListener('click', async function() {
+        document.location.replace(`/edit/${header.dataset.blogId}`)
+    });
+});

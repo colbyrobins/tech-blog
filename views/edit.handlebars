@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md6 mx-auto">
+      <div class="card">
+        <div class="blog-header-color">
+          <h5 class="card-header" data-blog-id="{{blogPost.id}}" >Edit Post</h5>
+        </div>
+        <div class="card-body blog-post-color">
+          <div class="mb-3">
+            <h6 class="text-start">Title</h6>
+            <input type="text" class="form-control" id="titleInput" value="{{blogPost.title}}"/> 
+          </div>
+          <div class="mb-3 text-start">
+            <h6>Content</h6>
+            <textarea class="form-control" id="bodyInput" rows="4"> {{blogPost.content}}</textarea>
+          </div>
+          <div class="text-center">
+            <button
+              class="btn col-md-12 bg-secondary text-white"
+              id="update-post-btn"
+            >Update Post</button>
+          </div>
+          <div class="mt-2 mb-2 text-center">
+            <button
+              class="btn col-md-12 bg-secondary text-white"
+              id="delete-post-btn"
+            >Delete Post </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/managePosts.js"></script>

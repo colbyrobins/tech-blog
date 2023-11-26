@@ -80,6 +80,7 @@ router.get('/login', (req, res) => {
    }
 });
 
+// Render a page with a single post and associated comments.
 router.get('/post/:id', async (req, res) => {
     const blogPostData = await BlogPost.findOne({
         where: {
@@ -103,7 +104,27 @@ router.get('/post/:id', async (req, res) => {
     res.render('post', {
         blogPost,
         comments,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+    });
+});
+
+// Edit post route
+router.get('/edit/:id', async (req, res) => {
+    if (!req.session.loggedIn) {
+        return;
+    }
+
+    const blogPostData = await BlogPost.findOne({
+        where: {
+            id: req.params.id
+        }
+    });
+    console.log(blogPostData)
+    const blogPost = blogPostData.get({ plain: true });
+    
+    res.render('edit', {
+        blogPost,
+        loggedIn: req.session.loggedIn,
     });
 });
 
