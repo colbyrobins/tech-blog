@@ -31,4 +31,3 @@ const createNewPost = async (event) => {
       }
     
 };
-

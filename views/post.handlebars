@@ -5,7 +5,7 @@
         <div class="blog-header-color">
           <div class="row">
             <div class="col-md-8">
-              <h5 class="card-header">{{blogPost.title}}</h5>
+              <h5 class="card-header" data-blog-id="{{blogPost.id}}">{{blogPost.title}}</h5>
             </div>
             <div class="col-md-4 text-end">
               <p class="mb-0">Posted by
@@ -25,22 +25,49 @@
       <div class="card">
         <div class="blog-header-color">
           <div class="row">
-            <div class="col-md-8 card-header">
+            <div class="col-md-8">
+              <h5 class="card-header"></h5>
+            </div>
+            <div class="col-md-4 text-end">
+              <p class="mb-0">
             </div>
           </div>
         </div>
         <div class="card-body blog-post-color">
-          <div class="">
+          <div class="mb-3">
             <p class="text-start">
-            <br>
-            {{comment.comment}}
-            <br>
-            - {{comment.user.username}}, {{format_date comment.date_created}}
-            <p>
+              <br>
+              {{comment.comment}}
+              <br>
+              - {{comment.user.username}}, {{format_date comment.date_created}}
+            </p>
           </div>
         </div>
       </div>
       {{/each}}
+      <div class="card">
+        <div class="blog-header-color">
+          <div class="row">
+            <div class="col-md-8">
+              <h5 class="card-header"></h5>
+            </div>
+          </div>
+        </div>
+        <div class="card-body blog-post-color">
+          <div class="mb-3">
+            <h6 class="text-start">Comment</h6>
+            <textarea class="form-control" id="commentInput" rows="4"></textarea>
+          </div>
+          <div class="text-center">
+            <button 
+              class="btn col-md-12 bg-secondary text-white"
+              id="createCommentBtn"> 
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+<script src="/js/comment.js"></script>

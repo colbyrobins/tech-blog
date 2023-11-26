@@ -10,8 +10,8 @@ router.post("/", async (req, res) => {
                 username: req.session.username.username
             }
           });
-        console.log(userData)
-        const blogData = await BlogPost.create({
+
+          const blogData = await BlogPost.create({
             title: req.body.title,
             content: req.body.content,
             creator_id: userData.id,

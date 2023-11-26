@@ -6,7 +6,7 @@
           <div class="blog-header-color rounded-3">
             <div class="row mx-auto">
               <div class="col-md-8">
-                <h5 class="card-header">{{title}}</h5>
+                <h5 class="card-header" data-blog-id="{{id}}">{{title}}</h5>
               </div>
               <div class="col-md-4 text-end">
                 <p class="mb-0">{{format_date date_created}}</p>
@@ -25,4 +25,5 @@
     onclick="newPostHandler()"
   >+ New Post</button>
 </div>
-<script src="./js/newPost.js"></script>
+<script src="/js/userPost.js"></script>
+<script src="/js/script.js"></script>
