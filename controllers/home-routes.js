@@ -74,7 +74,9 @@ router.get('/login', (req, res) => {
   // Create post route
  router.get('/createPost', (req, res) => {
    if (req.session.loggedIn) {
-       res.render('createpost');
+       res.render('createpost', {
+        loggedIn: req.session.loggedIn
+       });
    }
 });
 
@@ -100,7 +102,8 @@ router.get('/post/:id', async (req, res) => {
     
     res.render('post', {
         blogPost,
-        comments
+        comments,
+        loggedIn: req.session.loggedIn
     });
 });
 
