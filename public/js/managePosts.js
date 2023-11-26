@@ -21,8 +21,35 @@ const deletePost = async () => {
 
 };
 
-const updatePost = () => {
+// function to update post.
+const updatePost = async () => {
+  const updatedTitle = document.getElementById('titleInput').value;
+  const updatedContent = document.getElementById('bodyInput').value;
 
+  if (!updatedTitle || !updatedContent) {
+    alert('Title and/or content can not be empty.');
+    return;
+  }
+
+  await fetch(`/api/blogs/${blogId()}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      updatedTitle,
+      updatedContent
+    })
+  })
+  .then(response => {
+    if (!response.ok) {
+      alert('Unable to update post.')
+    }
+    return response.json();
+  })
+  .catch(error => {
+    console.error('PUT request failed', error);
+  })
 };
 
 updateBtn.addEventListener('click', updatePost);
