@@ -29,15 +29,14 @@ router.get('/dashboard', async (req, res) => {
             res.redirect('/login');
             return;
         }
-        
+
         const creatorData = await User.findOne({
-            // username: req.session.username
             where: {
                 username: req.session.username.username
             }
         }); 
         const userBlogPosts = await BlogPost.findAll({
-            attributes: [ 'title', 'date_created' ],
+            attributes: [ 'id', 'title', 'date_created' ],
             where: {
                 creator_id: creatorData.id
             }
@@ -77,6 +76,24 @@ router.get('/login', (req, res) => {
    if (req.session.loggedIn) {
        res.render('createpost');
    }
+});
+
+router.get('/post/:postTitle', async (req, res) => {
+    const blogPostData = await BlogPost.findOne({
+        where: {
+            title: req.params.postTitle.trim()
+        }
+    });
+
+    // const blogComments = await Comment.findAll({
+    //     where: {
+
+    //     }
+    // })
+    
+    const blogPost = blogPostData.get({ plain: true });
+    console.log(blogPost)
+    res.render('post', blogPost);
 });
 
 module.exports = router;

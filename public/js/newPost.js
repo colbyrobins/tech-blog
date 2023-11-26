@@ -1,7 +1,7 @@
 const newPostHandler = async (event) => {
     const blogPostsContainer = document.querySelector('#blog-posts');
     const newPostBtn = document.querySelector('#new-post-button');
-    
+
     // Go to createPost page.
     document.location.replace('/createPost');
     
