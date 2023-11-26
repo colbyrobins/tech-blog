@@ -7,7 +7,7 @@ router.post("/", async (req, res) => {
     try {
         const userData = await User.findOne({
             where: {
-                username: req.session.username.username
+                username: req.session.username
             }
           });
 
@@ -39,7 +39,7 @@ router.put('/:id', async (req, res) => {
         }
       }
     );
-    
+
     res.status(200).json({message: 'Blog Post updated successfully'});
   } catch (err) {
     res.status(500).json({message: 'Server side error'});

@@ -32,7 +32,7 @@ router.get('/dashboard', async (req, res) => {
 
         const creatorData = await User.findOne({
             where: {
-                username: req.session.username.username
+                username: req.session.username
             }
         }); 
         const userBlogPosts = await BlogPost.findAll({
